@@ -7,8 +7,8 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ImageRepository")
  */
-class Image
-{
+class Image {
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -21,20 +21,24 @@ class Image
      */
     private $Url;
 
-    public function getId(): ?int
-    {
+    /**
+     * @ORM\ManyToOne(targetEntity="Shoe")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $shoe;
+
+    public function getId(): ?int {
         return $this->id;
     }
 
-    public function getUrl(): ?string
-    {
+    public function getUrl(): ?string {
         return $this->Url;
     }
 
-    public function setUrl(string $Url): self
-    {
+    public function setUrl(string $Url): self {
         $this->Url = $Url;
 
         return $this;
     }
+
 }
